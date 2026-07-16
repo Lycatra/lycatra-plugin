@@ -15,7 +15,7 @@ runtime, dependency, or configuration file.
   the hosted OAuth-backed MCP server.
 - In Codex or Claude Code, use cloud tools for account data and the
   `lycatra_local_*` tools when the task benefits from the full local public CLI.
-  The local server starts automatically and bootstraps a signed Lycatra binary.
+  The local server starts automatically and bootstraps a checksum-verified Lycatra binary.
 - Use the host's native filesystem, terminal, browser, and code-editing tools for
   ordinary local computer work. Lycatra local tools complement those native
   capabilities; they do not replace the host's safety model.

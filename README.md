@@ -9,9 +9,10 @@ Installation is intentionally two steps:
 
 There is no separate daemon or CLI setup. Cloud-only surfaces use the hosted MCP
 server. Local Codex and Claude Code surfaces also start a small plugin process
-that downloads the matching signed Lycatra CLI binary, verifies its SHA-256
-checksum, and runs its local MCP bridge automatically. Normal host permission
-prompts still apply to writes, destructive actions, and externally visible work.
+that downloads the matching Lycatra CLI binary, verifies its SHA-256
+checksum before running it, and starts its local MCP bridge automatically.
+Normal host permission prompts still apply to writes, destructive actions, and
+externally visible work.
 
 Support: [lycatra.com/support](https://lycatra.com/support)
 

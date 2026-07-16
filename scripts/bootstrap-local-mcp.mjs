@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Cross-platform launcher for the signed Lycatra CLI's local MCP mode.
+ * Cross-platform launcher for the checksum-verified Lycatra CLI's local MCP mode.
  *
  * The plugin stays small: on first use this downloads the platform-specific
  * standalone binary, verifies it against the separately published SHA256SUMS,
@@ -14,10 +14,9 @@ import { chmod, mkdir, readFile, rename, rm, writeFile } from "node:fs/promises"
 import { homedir } from "node:os";
 import path from "node:path";
 
-const ASSET_BASE = (process.env.LYCATRA_ASSET_BASE || "https://get.lycatra.com/cli/download").replace(
-  /\/+$/,
-  "",
-);
+const ASSET_BASE = (
+  process.env.LYCATRA_ASSET_BASE || "https://get.lycatra.com/cli/download"
+).replace(/\/+$/, "");
 const CHANNEL = process.env.LYCATRA_RELEASE_CHANNEL === "dev" ? "dev" : "stable";
 
 function assetName() {
@@ -40,9 +39,17 @@ function dataDirectory() {
   const explicit = process.env.PLUGIN_DATA || process.env.CLAUDE_PLUGIN_DATA;
   if (explicit) return explicit;
   if (process.platform === "win32") {
-    return path.join(process.env.LOCALAPPDATA || path.join(homedir(), "AppData", "Local"), "Lycatra", "plugin");
+    return path.join(
+      process.env.LOCALAPPDATA || path.join(homedir(), "AppData", "Local"),
+      "Lycatra",
+      "plugin",
+    );
   }
-  return path.join(process.env.XDG_CACHE_HOME || path.join(homedir(), ".cache"), "lycatra", "plugin");
+  return path.join(
+    process.env.XDG_CACHE_HOME || path.join(homedir(), ".cache"),
+    "lycatra",
+    "plugin",
+  );
 }
 
 function sha256(bytes) {
@@ -84,7 +91,9 @@ async function ensureBinary() {
   const explicitBinary = process.env.LYCATRA_LOCAL_MCP_BINARY;
   if (explicitBinary) {
     if (!(await existingHash(explicitBinary))) {
-      throw new Error(`LYCATRA_LOCAL_MCP_BINARY does not point to a readable file: ${explicitBinary}`);
+      throw new Error(
+        `LYCATRA_LOCAL_MCP_BINARY does not point to a readable file: ${explicitBinary}`,
+      );
     }
     return explicitBinary;
   }
@@ -157,6 +166,8 @@ async function main() {
 }
 
 main().catch((error) => {
-  process.stderr.write(`lycatra plugin: ${error instanceof Error ? error.message : String(error)}\n`);
+  process.stderr.write(
+    `lycatra plugin: ${error instanceof Error ? error.message : String(error)}\n`,
+  );
   process.exitCode = 1;
 });
