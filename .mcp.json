@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "lycatra-cloud": {
+      "type": "http",
+      "url": "https://lycatra.com/api/mcp"
+    },
+    "lycatra-local": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/bootstrap-local-mcp.mjs"],
+      "env": {
+        "CLAUDE_PLUGIN_DATA": "${CLAUDE_PLUGIN_DATA}"
+      }
+    }
+  }
+}

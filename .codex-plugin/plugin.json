@@ -1,0 +1,36 @@
+{
+  "name": "lycatra",
+  "version": "0.1.0",
+  "description": "Connect ChatGPT and Codex to Lycatra agents, knowledge, memory, collaboration, scheduling, and the full local public CLI.",
+  "author": {
+    "name": "Lycatra",
+    "email": "support@lycatra.com",
+    "url": "https://lycatra.com"
+  },
+  "homepage": "https://lycatra.com/support",
+  "repository": "https://github.com/Lycatra/lycatra-plugin",
+  "license": "MIT",
+  "keywords": ["lycatra", "agents", "mcp", "automation", "collaboration"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Lycatra",
+    "shortDescription": "Your agents, knowledge, and local Lycatra CLI.",
+    "longDescription": "Connect a Lycatra account once to work with agents, wiki knowledge, memory, Matrix collaboration, notifications, schedules, and files. On Codex-capable local surfaces, the signed Lycatra CLI bridge starts automatically for the maximum capability the platform allows.",
+    "developerName": "Lycatra",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read", "Write", "Local"],
+    "websiteURL": "https://lycatra.com",
+    "privacyPolicyURL": "https://lycatra.com/privacy",
+    "termsOfServiceURL": "https://lycatra.com/terms",
+    "defaultPrompt": [
+      "Show my Lycatra agents and what needs attention.",
+      "Search my Lycatra wiki for the latest plan.",
+      "Use Lycatra to coordinate this task end to end."
+    ],
+    "brandColor": "#F9F6E5",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png"
+  }
+}

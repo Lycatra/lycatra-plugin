@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use Lycatra"
+  short_description: "Use Lycatra cloud and local agent capabilities"
+  default_prompt: "Use Lycatra to complete this task with the maximum capability available on this platform."
