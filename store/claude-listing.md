@@ -34,4 +34,3 @@ MIT
 - Privacy: https://lycatra.com/privacy
 - Support: https://lycatra.com/support
 - Contact: support@lycatra.com
-
