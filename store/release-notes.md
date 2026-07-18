@@ -1,3 +1,9 @@
+# Version 0.1.1
+
+- Local MCP tools are discoverable immediately in Codex and Claude Code.
+- The checksum-verified CLI download is deferred until the first local tool call.
+- Direct-install marketplace catalogs are included for both coding platforms.
+
 # Version 0.1.0
 
 Initial public Lycatra plugin release for ChatGPT, Codex, Claude Cowork, and Claude Code.
