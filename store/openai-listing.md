@@ -35,7 +35,7 @@ Lycatra checks the connected user's personal and actively shared agents before e
 - Support: https://lycatra.com/support
 - Privacy: https://lycatra.com/privacy
 - Terms: https://lycatra.com/terms
-- MCP server: https://lycatra.com/api/mcp
+- MCP server: https://www.lycatra.com/api/mcp
 - Public plugin source: https://github.com/Lycatra/lycatra-plugin
 
 ## OAuth scopes
