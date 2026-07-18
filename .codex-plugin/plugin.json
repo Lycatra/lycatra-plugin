@@ -1,6 +1,6 @@
 {
   "name": "lycatra",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Connect ChatGPT and Codex to Lycatra agents, knowledge, memory, collaboration, scheduling, and the full local public CLI.",
   "author": {
     "name": "Lycatra",
@@ -12,7 +12,18 @@
   "license": "MIT",
   "keywords": ["lycatra", "agents", "mcp", "automation", "collaboration"],
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json",
+  "mcpServers": {
+    "lycatra-cloud": {
+      "type": "http",
+      "url": "https://lycatra.com/api/mcp"
+    },
+    "lycatra-local": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["scripts/bootstrap-local-mcp.mjs"],
+      "cwd": "."
+    }
+  },
   "interface": {
     "displayName": "Lycatra",
     "shortDescription": "Your agents, knowledge, and local Lycatra CLI.",
