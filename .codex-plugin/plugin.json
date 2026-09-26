@@ -1,36 +1,35 @@
 {
   "name": "lycatra",
-  "version": "0.1.1",
-  "description": "Connect ChatGPT and Codex to Lycatra agents, knowledge, memory, collaboration, scheduling, and the full local public CLI.",
+  "version": "0.2.0-beta.1",
+  "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
   "author": {
     "name": "Lycatra",
     "email": "support@lycatra.com",
     "url": "https://lycatra.com"
   },
-  "homepage": "https://lycatra.com/support",
+  "homepage": "https://lycatra.com/connect",
   "repository": "https://github.com/Lycatra/lycatra-plugin",
   "license": "MIT",
-  "keywords": ["lycatra", "agents", "mcp", "automation", "collaboration"],
+  "keywords": [
+    "lycatra",
+    "agents",
+    "mcp",
+    "automation",
+    "collaboration"
+  ],
   "skills": "./skills/",
-  "mcpServers": {
-    "lycatra-cloud": {
-      "type": "http",
-      "url": "https://lycatra.com/api/mcp"
-    },
-    "lycatra-local": {
-      "type": "stdio",
-      "command": "node",
-      "args": ["scripts/bootstrap-local-mcp.mjs"],
-      "cwd": "."
-    }
-  },
+  "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "Lycatra",
-    "shortDescription": "Your agents, knowledge, and local Lycatra CLI.",
-    "longDescription": "Connect a Lycatra account once to work with agents, wiki knowledge, memory, Matrix collaboration, notifications, schedules, and files. On Codex-capable local surfaces, the signed Lycatra CLI bridge starts automatically for the maximum capability the platform allows.",
+    "displayName": "Lycatra (beta)",
+    "shortDescription": "Work with your Lycatra agents, knowledge, memory, schedules, teams, notifications, and Matrix collaboration.",
+    "longDescription": "Connect your Lycatra account once with OAuth, then work with the Lycatra resources you can access. Search and maintain wiki knowledge, inspect agents, manage persistent agent memory, schedule agent work, coordinate team tasks and shared state, handle notifications, and send Matrix messages. Where the agent can run shell commands, the Lycatra CLI handles the things only a real computer can do: running commands inside your agents, sharing local ports, and running programs with vault secrets.",
     "developerName": "Lycatra",
     "category": "Productivity",
-    "capabilities": ["Interactive", "Read", "Write", "Local"],
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
     "websiteURL": "https://lycatra.com",
     "privacyPolicyURL": "https://lycatra.com/privacy",
     "termsOfServiceURL": "https://lycatra.com/terms",

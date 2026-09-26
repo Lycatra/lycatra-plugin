@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "lycatra": {
+      "type": "http",
+      "url": "https://dev.lycatra.com/api/mcp"
+    }
+  }
+}

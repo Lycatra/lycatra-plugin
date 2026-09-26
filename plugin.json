@@ -1,0 +1,49 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "lycatra",
+  "version": "0.2.0-beta.1",
+  "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
+  "author": {
+    "name": "Lycatra",
+    "email": "support@lycatra.com",
+    "url": "https://lycatra.com"
+  },
+  "homepage": "https://lycatra.com/connect",
+  "repository": "https://github.com/Lycatra/lycatra-plugin",
+  "license": "MIT",
+  "keywords": [
+    "lycatra",
+    "agents",
+    "mcp",
+    "automation",
+    "collaboration"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Lycatra (beta)",
+        "shortDescription": "Work with your Lycatra agents, knowledge, memory, schedules, teams, notifications, and Matrix collaboration.",
+        "longDescription": "Connect your Lycatra account once with OAuth, then work with the Lycatra resources you can access. Search and maintain wiki knowledge, inspect agents, manage persistent agent memory, schedule agent work, coordinate team tasks and shared state, handle notifications, and send Matrix messages. Where the agent can run shell commands, the Lycatra CLI handles the things only a real computer can do: running commands inside your agents, sharing local ports, and running programs with vault secrets.",
+        "developerName": "Lycatra",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive",
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://lycatra.com",
+        "privacyPolicyURL": "https://lycatra.com/privacy",
+        "termsOfServiceURL": "https://lycatra.com/terms",
+        "defaultPrompt": [
+          "Show my Lycatra agents and what needs attention.",
+          "Search my Lycatra wiki for the latest plan.",
+          "Use Lycatra to coordinate this task end to end."
+        ],
+        "brandColor": "#F9F6E5",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo-dark.png"
+      }
+    }
+  }
+}

@@ -1,14 +1,14 @@
 {
-  "name": "lycatra",
+  "name": "lycatra-beta",
   "interface": {
-    "displayName": "Lycatra"
+    "displayName": "Lycatra (beta)"
   },
   "plugins": [
     {
       "name": "lycatra",
       "source": {
         "source": "local",
-        "path": "."
+        "path": "./"
       },
       "policy": {
         "installation": "AVAILABLE",
