@@ -138,11 +138,30 @@ account: agents, wiki, memory, schedules, notifications, teams, Matrix, vault
 metadata, and a browser that runs inside your agents. You sign in once with
 Lycatra's OAuth prompt, and the app only sees what your account can access.
 
-Some tasks need a real computer, such as running a command inside one of your
-agents or sharing a local port. Where the agent can run shell commands, as in
-Claude Code and Codex, it installs the checksum-verified `lycatra` command the
-first time it needs one of those tasks. Everything else stays on the hosted
-tools, so an agent never has two ways to do the same thing.
+Hosted MCP and the Lycatra CLI are both supported interfaces. An authorized
+local or cloud shell can use the checksum-verified CLI for the same account
+operations. Local ports and child processes additionally need suitable runtime
+capabilities. Ordinary hosted tools do not require a personal computer.
+
+Cloud event delivery is negotiated with the receiving host when supported by
+the server. It continues independently of a CLI shell. The CLI can inspect and
+manage owner-authorized subscriptions, but cannot manufacture a host callback
+or wake a chat by name. Start with `lycatra notify targets doctor --json` for
+read-only diagnosis. Local `notify wake` adapters remain separate.
+
+For explicit cloud-agent enrollment, use the selected environment's
+`/api/mcp/cloud` resource returned by `notify targets connect`. Compatible hosts
+discover its starter scopes and follow OAuth enrollment and consent. The normal
+`/api/mcp` resource retains human-account behavior. Cloud event support still
+requires qualification in the receiving host.
+
+Explicitly approved `notify events subscriptions resync <id> --yes` skips one
+parked or cancelled head event and reports the skipped sequence and new cursor.
+It does not retry that event or change subscription pause or lease expiry.
+
+Beta uses dev and stable uses production throughout installation, login and
+updates. Each CLI profile has separate credentials and update state. Provider
+credential setup for local coding harnesses is optional, separate from login.
 
 Your app's normal permission prompts still apply to writes, deletions, and
 anything visible to other people.

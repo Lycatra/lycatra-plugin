@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "lycatra",
-  "version": "0.2.0-beta.1",
+  "version": "0.2.0-beta.2",
   "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
   "author": {
     "name": "Lycatra",
@@ -23,7 +23,7 @@
       "interface": {
         "displayName": "Lycatra (beta)",
         "shortDescription": "Work with your Lycatra agents, knowledge, memory, schedules, teams, notifications, and Matrix collaboration.",
-        "longDescription": "Connect your Lycatra account once with OAuth, then work with the Lycatra resources you can access. Search and maintain wiki knowledge, inspect agents, manage persistent agent memory, schedule agent work, coordinate team tasks and shared state, handle notifications, and send Matrix messages. Where the agent can run shell commands, the Lycatra CLI handles the things only a real computer can do: running commands inside your agents, sharing local ports, and running programs with vault secrets.",
+        "longDescription": "Connect your Lycatra account once with OAuth, then work with the Lycatra resources you can access. Search and maintain wiki knowledge, inspect agents, manage persistent agent memory, schedule agent work, coordinate team tasks and shared state, handle notifications, and send Matrix messages. Hosted MCP and the Lycatra CLI are supported interfaces for cloud and local assistants. Any authorized shell can use the CLI; local process, port and vault-secret execution additionally require suitable runtime capabilities. Cloud notifications use verified host subscriptions when advertised by the server.",
         "developerName": "Lycatra",
         "category": "Productivity",
         "capabilities": [

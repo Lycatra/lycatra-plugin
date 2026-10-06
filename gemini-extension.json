@@ -1,6 +1,6 @@
 {
   "name": "lycatra",
-  "version": "0.2.0-beta.1",
+  "version": "0.2.0-beta.2",
   "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
   "mcpServers": {
     "lycatra": {

@@ -9,10 +9,16 @@ The Lycatra tools cover everything stored in the user's Lycatra account. They
 act as the signed-in user and see only what that user can access. The tools and
 their inputs are listed in [references/tools.md](references/tools.md).
 
-A few tasks need the user's own computer instead: running a command inside one
-of their agents, sharing a local port, or running a program with vault secrets.
-Those use the `lycatra` command in a shell, described by the `lycatra-cli`
-skill. Never use the command for something a tool already does.
+Hosted MCP and the Lycatra CLI are supported interfaces over shared domain
+contracts. A cloud assistant can use these hosted tools directly. If an
+authorized shell is available, local or cloud, the `lycatra-cli` skill describes
+CLI access, environment selection and read-only notification diagnostics.
+Port forwarding and local process execution need a suitable shell; ordinary
+Lycatra reads and writes do not require the user's personal computer.
+
+Cloud wake delivery is available only when the authenticated server advertises
+events and the receiving host supports them. A CLI process cannot identify or
+wake this chat by its display name. An observer does not consume an agent queue.
 
 ## Signing in
 
