@@ -1,7 +1,6 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "lycatra",
-  "description": "Official Lycatra plugins for agents, knowledge, collaboration, and local CLI access.",
+  "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
   "owner": {
     "name": "Lycatra",
     "email": "support@lycatra.com"
@@ -10,9 +9,15 @@
     {
       "name": "lycatra",
       "source": "./",
-      "description": "Connect Claude to Lycatra agents, knowledge, collaboration, schedules, and the local public CLI.",
+      "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
       "category": "productivity",
-      "tags": ["agents", "knowledge", "mcp", "automation", "collaboration"]
+      "tags": [
+        "lycatra",
+        "agents",
+        "mcp",
+        "automation",
+        "collaboration"
+      ]
     }
   ]
 }

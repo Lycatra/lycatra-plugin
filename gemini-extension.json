@@ -1,0 +1,13 @@
+{
+  "name": "lycatra",
+  "version": "0.2.0",
+  "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
+  "mcpServers": {
+    "lycatra": {
+      "httpUrl": "https://lycatra.com/api/mcp",
+      "oauth": {
+        "enabled": true
+      }
+    }
+  }
+}

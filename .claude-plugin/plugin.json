@@ -1,17 +1,23 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "lycatra",
   "displayName": "Lycatra",
-  "version": "0.1.1",
-  "description": "Connect Claude Cowork and Claude Code to Lycatra agents, knowledge, memory, collaboration, scheduling, and the local public CLI.",
+  "version": "0.2.0",
+  "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
   "author": {
     "name": "Lycatra",
     "email": "support@lycatra.com",
     "url": "https://lycatra.com"
   },
-  "homepage": "https://lycatra.com/support",
+  "homepage": "https://lycatra.com/connect",
   "repository": "https://github.com/Lycatra/lycatra-plugin",
   "license": "MIT",
-  "mcpServers": "./.claude-plugin/mcp.json",
-  "keywords": ["lycatra", "agents", "mcp", "automation", "collaboration"]
+  "keywords": [
+    "lycatra",
+    "agents",
+    "mcp",
+    "automation",
+    "collaboration"
+  ],
+  "mcpServers": "./.mcp.json",
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json"
 }

@@ -1,41 +1,174 @@
 # Lycatra plugin
 
-Connect ChatGPT, Codex, Claude Cowork, and Claude Code to your Lycatra account.
+Lycatra for Claude, ChatGPT, Codex, Cursor, VS Code, and any other app that
+speaks MCP: your agents, wiki, memory, teams, schedules, notifications, Matrix
+chat, and vault, in one sign-in.
 
 ## Install
 
-After store approval, search for **Lycatra** in the ChatGPT/Codex or Claude
-plugin directory, add it, and complete the Lycatra OAuth prompt. That is the
-entire setup.
+Every app below connects to `https://lycatra.com/api/mcp` and asks you to sign in to Lycatra once. One-click buttons for every app are on [lycatra.com/connect](https://lycatra.com/connect).
 
-Until the directory listings finish review, the same signed public package can
-be installed directly from GitHub:
+### Claude
 
-```powershell
+Claude on the web, desktop, and mobile, and Cowork.
+
+Recommended: the plugin, with skills:
+
+1. In Claude, open Customize, then Plugins, then Add marketplace.
+2. Enter Lycatra/lycatra-plugin and turn on Sync automatically.
+3. Install Lycatra, then connect it when Claude asks you to sign in.
+
+- [Add as a connector only](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Lycatra&connectorUrl=https%3A%2F%2Flycatra.com%2Fapi%2Fmcp)
+
+- [Add for your organization](https://claude.ai/admin-settings/connectors?modal=add-custom-connector&connectorName=Lycatra&connectorUrl=https%3A%2F%2Flycatra.com%2Fapi%2Fmcp)
+
+A plugin added here also appears in Claude Code when you sign in with the same account.
+
+Team and Enterprise plans: an organization owner adds Lycatra, then members connect it.
+
+### ChatGPT
+
+ChatGPT on the web and desktop.
+
+Developer mode:
+
+1. In ChatGPT, open Settings, then Security and login, and turn on Developer mode.
+2. Open chatgpt.com/plugins, choose the plus button, and enter https://lycatra.com/api/mcp.
+3. Sign in to Lycatra when ChatGPT asks.
+
+- [Open ChatGPT plugins](https://chatgpt.com/plugins)
+
+Until Lycatra is in the ChatGPT directory, adding it needs developer mode, which depends on your plan.
+
+### Claude Code
+
+Lycatra tools, plus the Lycatra CLI for work that needs your computer.
+
+```sh
+claude plugin marketplace add Lycatra/lycatra-plugin
+claude plugin install lycatra@lycatra
+```
+
+Turn on updates in /plugin, Marketplaces, then Enable auto-update. `lycatra setup` does this for you.
+
+### Codex
+
+The Codex CLI, the Codex app, and ChatGPT desktop.
+
+```sh
 codex plugin marketplace add Lycatra/lycatra-plugin
 codex plugin add lycatra@lycatra
 ```
 
-```powershell
-claude plugin marketplace add Lycatra/lycatra-plugin
-claude plugin install lycatra@lycatra --scope user
+Codex IDE extension (tools only):
+
+```sh
+codex mcp add lycatra --url https://lycatra.com/api/mcp
 ```
 
-In either route, installation is intentionally two steps:
+### Cursor
 
-1. Add the Lycatra plugin from the platform's plugin directory.
-2. Complete the Lycatra OAuth prompt.
+Lycatra tools in Cursor's agent.
 
-There is no separate daemon or CLI setup. Cloud-only surfaces use the hosted MCP
-server. Local Codex and Claude Code surfaces also start a small plugin process
-that exposes the local tools immediately, downloads the matching Lycatra CLI
-binary on their first use, verifies its SHA-256 checksum before running it, and
-starts automatically on later sessions.
-Normal host permission prompts still apply to writes, destructive actions, and
-externally visible work.
+- [Add to Cursor](https://lycatra.com/connect#cursor)
 
-Support: [lycatra.com/support](https://lycatra.com/support)
+### VS Code
 
-Privacy: [lycatra.com/privacy](https://lycatra.com/privacy)
+GitHub Copilot in VS Code.
 
-Terms: [lycatra.com/terms](https://lycatra.com/terms)
+- [Install the plugin](https://lycatra.com/connect#vscode)
+
+- [Add the tools only](https://lycatra.com/connect#vscode)
+
+### GitHub Copilot CLI
+
+Lycatra in the Copilot command line.
+
+```sh
+copilot plugin marketplace add Lycatra/lycatra-plugin
+copilot plugin install lycatra@lycatra
+```
+
+### Gemini CLI
+
+Lycatra tools as a Gemini CLI extension.
+
+```sh
+gemini extensions install https://github.com/Lycatra/lycatra-plugin --auto-update
+```
+
+### Goose
+
+Lycatra tools as a Goose extension.
+
+- [Add to Goose](https://lycatra.com/connect#goose)
+
+### LM Studio
+
+Lycatra tools for local models.
+
+- [Add to LM Studio](https://lycatra.com/connect#lm-studio)
+
+### Any other MCP client
+
+Add the MCP server URL. It signs in with OAuth.
+
+Set up every agent add-mcp finds:
+
+```sh
+npx add-mcp https://lycatra.com/api/mcp
+```
+
+### The Lycatra CLI
+
+Agents that can run shell commands install it themselves the first time they need your computer, for example to run a command inside one of your agents. To install it yourself:
+
+```sh
+curl -fsSL https://lycatra.com/install.sh | bash
+```
+
+```powershell
+irm https://lycatra.com/install.ps1 | iex
+```
+
+## How it works
+
+Every app talks to Lycatra's hosted MCP server for anything stored in your
+account: agents, wiki, memory, schedules, notifications, teams, Matrix, vault
+metadata, and a browser that runs inside your agents. You sign in once with
+Lycatra's OAuth prompt, and the app only sees what your account can access.
+
+Hosted MCP and the Lycatra CLI are both supported interfaces. An authorized
+local or cloud shell can use the checksum-verified CLI for the same account
+operations. Local ports and child processes additionally need suitable runtime
+capabilities. Ordinary hosted tools do not require a personal computer.
+
+Cloud event delivery is negotiated with the receiving host when supported by
+the server. It continues independently of a CLI shell. The CLI can inspect and
+manage owner-authorized subscriptions, but cannot manufacture a host callback
+or wake a chat by name. Start with `lycatra notify targets doctor --json` for
+read-only diagnosis. Local `notify wake` adapters remain separate.
+
+For explicit cloud-agent enrollment, use the selected environment's
+`/api/mcp/cloud` resource returned by `notify targets connect`. Compatible hosts
+discover its starter scopes and follow OAuth enrollment and consent. The normal
+`/api/mcp` resource retains human-account behavior. Cloud event support still
+requires qualification in the receiving host.
+
+Explicitly approved `notify events subscriptions resync <id> --yes` skips one
+parked or cancelled head event and reports the skipped sequence and new cursor.
+It does not retry that event or change subscription pause or lease expiry.
+
+Beta uses dev and stable uses production throughout installation, login and
+updates. Each CLI profile has separate credentials and update state. Provider
+credential setup for local coding harnesses is optional, separate from login.
+
+Your app's normal permission prompts still apply to writes, deletions, and
+anything visible to other people.
+
+## Support
+
+- Help: [lycatra.com/support](https://lycatra.com/support)
+- Privacy: [lycatra.com/privacy](https://lycatra.com/privacy)
+- Terms: [lycatra.com/terms](https://lycatra.com/terms)
+

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lycatra on this computer"
+  short_description: "Run commands in your agents and share local ports"
+  default_prompt: "Run uname inside my Lycatra agent."
