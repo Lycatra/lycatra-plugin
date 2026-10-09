@@ -3,7 +3,7 @@
   "name": "com.lycatra/lycatra",
   "title": "Lycatra",
   "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "websiteUrl": "https://lycatra.com/connect",
   "repository": {
     "url": "https://github.com/Lycatra/lycatra-plugin",
