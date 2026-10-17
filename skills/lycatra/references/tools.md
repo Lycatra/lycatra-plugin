@@ -90,7 +90,7 @@
 | Tool | Summary | Safety |
 |---|---|---|
 | `vault_status` | Report whether the connected account's vault is currently unlocked, which collections it can reach, and which access requests are still open. | read |
-| `vault_unlock` | Unlock the connected account's vault for this session with their Lycatra password, plus a six-digit code when two-factor is enabled. | write |
+| `vault_unlock` | Return an account-bound Lycatra HTTPS link to unlock and remember vault access in the browser. | write |
 | `vault_list` | List vault items the connected account may reach: names, hosts, collections, and ids. | read |
 | `vault_show` | Show one vault item's metadata, its username, its notes, and the values of its non-hidden custom fields. | read |
 | `vault_totp` | Return the current six-digit two-factor code for an item that stores a TOTP secret. | read |
