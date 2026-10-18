@@ -32,16 +32,6 @@
 | `wiki_discuss_new` | Start a titled discussion on one accessible wiki page. | write |
 | `wiki_discuss_reply` | Post a reply to one accessible wiki discussion. | write |
 
-## memory
-
-| Tool | Summary | Safety |
-|---|---|---|
-| `memory_list` | List persistent memory files for one Lycatra agent accessible to the connected account. | read |
-| `memory_read` | Read one persistent memory file belonging to a Lycatra agent accessible to the connected account. | read |
-| `memory_write` | Create or replace one persistent memory file for a Lycatra agent accessible to the connected account. | destructive |
-| `memory_delete` | Permanently delete one persistent memory file. | destructive |
-| `memory_stats` | Show persistent-memory file, link, orphan, quota, and utilization totals for an accessible Lycatra agent. | read |
-
 ## schedule
 
 | Tool | Summary | Safety |
@@ -110,3 +100,9 @@
 | `browser_login` | Fill a vault item's username, password, and two-factor code into the sign-in form already open in the agent's browser, then submit it. | write |
 | `browser_signup` | Generate a password, save it to the vault as a new login, and fill the sign-up form open in the agent's browser with it. | write |
 | `browser_close` | Close the agent browser session, discarding its pages and in-memory state. | write |
+
+## search
+
+| Tool | Summary | Safety |
+|---|---|---|
+| `search` | Search everything the connected Lycatra account can see, the way the site's Ctrl+K palette does: the site's pages and commands, equipment, suppliers, articles, categories and brands, and the account's own settings and wiki pages. | read |
