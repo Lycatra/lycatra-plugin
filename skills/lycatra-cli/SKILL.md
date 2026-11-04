@@ -82,6 +82,10 @@ accepted by a host does not prove that the assistant completed the work.
 |---|---|
 | Run a command inside an agent | `lycatra ssh <agent> -- <command>` |
 | Share a local port | `lycatra share start <port>`, then `lycatra share ls` and `lycatra share stop <id>` |
+| Hand the browser to a person | `lycatra browser handoff "<what they should do>"` in the background; send the printed link` |
+| Show a person the browser or a dev server live | `lycatra browser live --open http://localhost:3000` in the background; send the printed link` |
+| Get a person past a captcha | `lycatra browser unblock` in the background after a step a bot check may block; send the printed link` |
+| Browse from a trusted network address | `lycatra browser egress` in the background, then start agent-browser with the printed --proxy` |
 | Reach a shared port locally | `lycatra forward <token> [localPort]` |
 | Run a program with vault secrets in its environment | `lycatra vault run <item> --env NAME=field -- <command>` |
 | Fill a login into the open local browser page | `lycatra vault login <item>` |
