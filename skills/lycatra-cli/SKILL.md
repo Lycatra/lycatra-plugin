@@ -1,15 +1,13 @@
 ---
 name: lycatra-cli
-description: Use the Lycatra CLI from any authorized local or cloud shell for Lycatra knowledge, agents, notifications, collaboration, and runtime capabilities. Hosted MCP and CLI are supported interfaces over shared contracts; select the available interface without inventing an identity or cloud wake target.
+description: Use the Lycatra CLI from a local or cloud shell for work the Lycatra tools cannot do - handing a file to a person, recording a bug or feedback, handing work to another agent, creating an agent, a scored council review, running commands in an agent or on an enrolled computer, sharing a port, running with vault secrets - and to install, sign in or check the selected environment.
 ---
 
 # Lycatra from any shell
 
 The Lycatra CLI works in authorized local and cloud shells. Hosted MCP tools
-and the CLI are supported interfaces to the same Lycatra domain operations.
-Use whichever is available and appropriate. A hosted assistant can use MCP
-without a local computer or CLI installation. A cloud shell is a valid CLI
-execution environment; it is not the identity of a cloud chat.
+and the CLI reach the same Lycatra operations; use whichever is available. A
+cloud shell can run the CLI, but it is not the identity of a cloud chat.
 
 This package uses the stable CLI channel, prod
 plane and https://lycatra.com issuer. Keep install, login, update and MCP on
@@ -33,47 +31,10 @@ that channel. Never fall back to production if this environment is unavailable.
    a remote machine, run `lycatra login --start`, show the user the link it
    prints, then run `lycatra login --wait`. Then retry the original command.
 
-`lycatra login` is sufficient for ordinary CLI access. Provider credential
-setup for local coding harnesses is a separate, optional task; do not run it
-as a prerequisite. Installation, login and updates require the user's authorization.
-
-`lycatra update` explicitly updates the selected channel. Do not run updates,
-login or repair commands as part of diagnosis.
-
-## Cloud notification delivery
-
-Use `lycatra notify targets doctor --json` for read-only capability checks.
-`lycatra notify targets connect --kind mcp-events --host chatgpt` explains the
-receiving host's handshake and remains awaiting_host until that host creates
-a verified subscription. Never request a copied callback secret or guessed
-chat ID. Use the explicit opt-in resource `https://lycatra.com/api/mcp/cloud`
-in a compatible receiving host. Its authentication challenge and resource
-metadata request starter scopes `openid profile email offline_access
-lycatra:agent wiki:read events:observe`; follow the host's standard OAuth
-registration, enrollment and consent flow. Do not ask users to copy secrets or
-manually invent scopes. Writes and full Matrix history need separate approval.
-The ordinary `/api/mcp` resource keeps human-account behavior. Generic MCP
-clients may support tools only; cloud enrollment and event support must be
-verified in the receiving host before claiming it works.
-
-`lycatra notify events catalog` lists available events. Event subscriptions live
-under `lycatra notify events subscriptions`; the existing `notify subscribe`
-and `notify subscriptions` commands still control attention preferences.
-Delivery receipts are under `lycatra notify deliveries`. Pause, resume, revoke
-and retry are explicit mutations, separate from diagnosis.
-
-Only after the user approves skipping a blocked event, run
-`lycatra notify events subscriptions resync <id> --yes`. This skips exactly one
-parked or cancelled head event and reports `truncated: true`, `skippedSequence`
-and the new cursor. It does not retry the skipped event, clear pause, or renew
-an expired lease. Inspect the subscription and delivery first; do not blindly
-repeat resync after an uncertain result, because another call can skip another
-event. A 410 or 413 delivery failure is never silently retried.
-
-`lycatra notify wake codex` drives a local app-server; `wake claude` drives a
-local monitor. Neither wakes an arbitrary hosted chat. `notify drain` claims
-and acknowledges local run-lane work; it is not a read-only observer. A webhook
-accepted by a host does not prove that the assistant completed the work.
+`lycatra login` is enough for ordinary CLI access. Provider credential setup
+for local coding harnesses is a separate, optional task, not a prerequisite.
+Installing, signing in and updating (`lycatra update`) need the user's
+authorization. Never run them, or repair commands, as part of diagnosis.
 
 ## Commands
 
@@ -94,6 +55,17 @@ accepted by a host does not prove that the assistant completed the work.
 | Update the command now | `lycatra update` |
 <!-- generated:machine-commands:end -->
 
+These also run only from the CLI:
+
+| Task | Command |
+|---|---|
+| Hand a finished file to a person as a download link | `lycatra deliver <path>` |
+| Record a bug or user feedback | `lycatra issues capture "<evidence>" [--kind feedback]` |
+| Hand work to another agent and get its reply | `lycatra agent handoff <agent> "<brief>" [--wait]` |
+| Create an agent (or in the app at /ai) | `lycatra agent create <name> --purpose "..."` |
+| Get a scored review from two models | `lycatra council review --task <brief.md>` |
+| Ask to run a command on an enrolled computer | `lycatra ssh request <computer> --exec "<command>" --for 2h --why "<reason>" --wait` |
+
 Add `--json` when you need to read the output. A bare `lycatra ssh <agent>`
 opens an interactive shell, which hangs your terminal, so always pass the
 command after `--`.
@@ -103,3 +75,13 @@ before running anything inside an agent that changes its state.
 
 `lycatra vault run` puts secrets in the child process's environment, never in
 your transcript. Do not print them from inside the command.
+
+## Cloud notifications
+
+A cloud chat receives Lycatra events only through a verified MCP Events
+subscription on `https://lycatra.com/api/mcp/cloud`. `lycatra notify targets
+connect` stays `awaiting_host` until the receiving host creates it, and
+`lycatra notify targets doctor --json` checks capability without changing
+anything. `lycatra notify wake` drives only a local app-server or monitor, never
+a hosted chat. Before you set up, diagnose or resync event delivery, read
+[references/notify-events.md](references/notify-events.md).

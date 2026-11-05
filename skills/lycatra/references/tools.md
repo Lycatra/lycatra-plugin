@@ -17,7 +17,7 @@
 
 | Tool | Summary | Safety |
 |---|---|---|
-| `wiki_spaces` | List the personal and organization wiki spaces the connected Lycatra account can access. | read |
+| `wiki_spaces` | List the wiki spaces this connection can access. | read |
 | `wiki_list` | List wiki documents accessible to the connected Lycatra account, newest first. | read |
 | `wiki_search` | Search titles and content across wiki documents accessible to the connected Lycatra account. | read |
 | `wiki_read` | Read one accessible Lycatra wiki document by slug. | read |
@@ -55,9 +55,9 @@
 
 | Tool | Summary | Safety |
 |---|---|---|
-| `matrix_send` | Send one Matrix message as the connected Lycatra user's managed Matrix identity. | destructive |
-| `matrix_history` | Read recent text messages from a Matrix room the connected user has joined. | read |
-| `matrix_rooms` | List Matrix rooms joined by the connected user's managed Matrix identity. | read |
+| `matrix_send` | Send one Matrix message as this connection's Matrix identity (the signed-in user's, or a cloud connection's agent's). | destructive |
+| `matrix_history` | Read recent text messages from a Matrix room this connection's Matrix identity has joined. | read |
+| `matrix_rooms` | List Matrix rooms joined by this connection's Matrix identity. | read |
 
 ## teams
 
