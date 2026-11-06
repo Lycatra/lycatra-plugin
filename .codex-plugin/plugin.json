@@ -1,7 +1,7 @@
 {
   "name": "lycatra",
-  "version": "0.2.0-beta.6",
-  "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
+  "version": "0.3.0-beta.1",
+  "description": "Your Lycatra agents, wiki, teams, schedules and vault sign-ins, and film gear to rent, from chat.",
   "author": {
     "name": "Lycatra",
     "email": "support@lycatra.com",
@@ -13,16 +13,17 @@
   "keywords": [
     "lycatra",
     "agents",
+    "wiki",
+    "teams",
     "mcp",
-    "automation",
-    "collaboration"
+    "productivity"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Lycatra (beta)",
-    "shortDescription": "Work with your Lycatra agents, knowledge, memory, schedules, teams, notifications, and Matrix collaboration.",
-    "longDescription": "Connect your Lycatra account once with OAuth, then work with the Lycatra resources you can access. Search and maintain wiki knowledge, inspect agents, manage persistent agent memory, schedule agent work, coordinate team tasks and shared state, handle notifications, and send Matrix messages. Hosted MCP and the Lycatra CLI are supported interfaces for cloud and local assistants. Any authorized shell can use the CLI; local process, port and vault-secret execution additionally require suitable runtime capabilities. Cloud notifications use verified host subscriptions when advertised by the server.",
+    "shortDescription": "Your agents, wiki and teams",
+    "longDescription": "Lycatra is where your AI agents, your team's wiki and your shared work live. Connect your Lycatra account once, then ask in chat or in code: search, read and write wiki pages, see what your agents are doing and the questions waiting for them, plan team tasks, schedule an agent to do something later, and send Matrix messages. An agent's browser can sign in to a website with a login from your Lycatra vault: the password goes from the vault to that browser and never enters the conversation. You can also search the Lycatra shop for cameras, lenses and other film gear to rent or buy. Lycatra sees and changes only what your account can access. Every tool that changes something is marked destructive, so your assistant asks you first.",
     "developerName": "Lycatra",
     "category": "Productivity",
     "capabilities": [
@@ -31,16 +32,19 @@
       "Write"
     ],
     "websiteURL": "https://lycatra.com",
+    "supportURL": "https://lycatra.com/support",
     "privacyPolicyURL": "https://lycatra.com/privacy",
     "termsOfServiceURL": "https://lycatra.com/terms",
     "defaultPrompt": [
-      "Show my Lycatra agents and what needs attention.",
-      "Search my Lycatra wiki for the latest plan.",
-      "Use Lycatra to coordinate this task end to end."
+      "What questions are waiting for my Lycatra agents?",
+      "Search my Lycatra wiki for our onboarding notes and summarise them.",
+      "Find a cinema camera I can rent on Lycatra."
     ],
-    "brandColor": "#F9F6E5",
+    "brandColor": "#0A0A0A",
+    "brandColorDark": "#F8F6E5",
     "composerIcon": "./assets/icon.png",
-    "logo": "./assets/logo.png",
-    "logoDark": "./assets/logo-dark.png"
+    "composerIconDark": "./assets/icon-dark.png",
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon-dark.png"
   }
 }

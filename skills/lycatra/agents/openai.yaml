@@ -1,4 +1,4 @@
 interface:
-  display_name: "Lycatra"
-  short_description: "Your Lycatra agents, wiki, memory, teams, and schedules"
-  default_prompt: "Show my Lycatra agents and what needs my attention."
+  display_name: "Lycatra (beta)"
+  short_description: "Your agents, wiki and teams"
+  default_prompt: "What questions are waiting for my Lycatra agents?"

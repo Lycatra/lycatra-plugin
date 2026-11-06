@@ -1,8 +1,10 @@
 # Lycatra plugin
 
-Lycatra for Claude, ChatGPT, Codex, Cursor, VS Code, and any other app that
-speaks MCP: your agents, wiki, memory, teams, schedules, notifications, Matrix
-chat, and vault, in one sign-in.
+Lycatra is where your AI agents, your team's wiki and your shared work live. This plugin connects Claude, ChatGPT, Codex, Cursor, VS Code and other MCP apps to your Lycatra account. Sign in once, then ask:
+
+- "What questions are waiting for my Lycatra agents?"
+- "Search my Lycatra wiki for our onboarding notes and summarise them."
+- "Find a cinema camera I can rent on Lycatra."
 
 ## Install
 
@@ -116,12 +118,12 @@ Add the MCP server URL. It signs in with OAuth.
 Set up every agent add-mcp finds:
 
 ```sh
-npx add-mcp https://dev.lycatra.com/api/mcp
+npx add-mcp@2.6.1 https://dev.lycatra.com/api/mcp
 ```
 
 ### The Lycatra CLI
 
-Agents that can run shell commands install it themselves the first time they need your computer, for example to run a command inside one of your agents. To install it yourself:
+Agents that can run shell commands ask you before installing it, the first time they need your computer, for example to run a command inside one of your agents. To install it yourself:
 
 ```sh
 curl -fsSL https://dev.lycatra.com/install.sh | bash
@@ -131,44 +133,73 @@ curl -fsSL https://dev.lycatra.com/install.sh | bash
 irm https://dev.lycatra.com/install.ps1 | iex
 ```
 
-## How it works
+## What the plugin contains
 
-Every app talks to Lycatra's hosted MCP server for anything stored in your
-account: agents, wiki, memory, schedules, notifications, teams, Matrix, vault
-metadata, and a browser that runs inside your agents. You sign in once with
-Lycatra's OAuth prompt, and the app only sees what your account can access.
+- **One connection:** Lycatra's hosted MCP server at `https://dev.lycatra.com/api/mcp`.
+  You sign in with Lycatra's OAuth prompt and approve the connection. The app
+  then sees only what your Lycatra account can access.
+- **Two skills,** plain Markdown that teaches the assistant how to use Lycatra:
+  `lycatra` for the tools, and `lycatra-cli` for work that needs a terminal,
+  such as running a command inside one of your agents or sharing a local port.
 
-Hosted MCP and the Lycatra CLI are both supported interfaces. An authorized
-local or cloud shell can use the checksum-verified CLI for the same account
-operations. Local ports and child processes additionally need suitable runtime
-capabilities. Ordinary hosted tools do not require a personal computer.
+There are no scripts, binaries or hooks in this package. The connection talks
+only to `dev.lycatra.com`, and only through the tools you or your assistant
+call. The agent browser tools run in your Lycatra agent and visit the websites
+you ask for; a vault login goes from the vault to that browser, never into the
+conversation.
 
-Cloud event delivery is negotiated with the receiving host when supported by
-the server. It continues independently of a CLI shell. The CLI can inspect and
-manage owner-authorized subscriptions, but cannot manufacture a host callback
-or wake a chat by name. Start with `lycatra notify targets doctor --json` for
-read-only diagnosis. Local `notify wake` adapters remain separate.
+The `lycatra-cli` skill can suggest installing the Lycatra command-line tool
+from `https://dev.lycatra.com/install.sh` (or `install.ps1` on Windows). The
+assistant asks before installing it, signing in or updating it. The installer
+verifies the download's checksum before it puts the binary in place.
 
-For explicit cloud-agent enrollment, use the selected environment's
-`/api/mcp/cloud` resource returned by `notify targets connect`. Compatible hosts
-discover its starter scopes and follow OAuth enrollment and consent. The normal
-`/api/mcp` resource retains human-account behavior. Cloud event support still
-requires qualification in the receiving host.
+Once installed, the CLI commands the skill teaches run on your computer and send
+data only where you point them:
 
-Explicitly approved `notify events subscriptions resync <id> --yes` skips one
-parked or cancelled head event and reports the skipped sequence and new cursor.
-It does not retry that event or change subscription pause or lease expiry.
+- Files you deliver, a browser you hand off or show live, and ports you share
+  go to `dev.lycatra.com`, which serves them to the people you send the link to.
+- Work you hand to another agent, with its brief, and bug reports with their
+  attachments go to `dev.lycatra.com`.
+- Commands you run inside an agent run in that agent on Lycatra. A command
+  on someone's enrolled computer runs there only after its owner approves.
+- `lycatra vault run` and `lycatra vault login` put a vault secret only into
+  the local program or browser page you name, never into the conversation.
 
-Beta uses dev and stable uses production throughout installation, login and
-updates. Each CLI profile has separate credentials and update state. Provider
-credential setup for local coding harnesses is optional, separate from login.
+The full command list is in `skills/lycatra-cli/SKILL.md`.
 
-Your app's normal permission prompts still apply to writes, deletions, and
-anything visible to other people.
+## What the tools can do
 
-## Support
+<!-- generated:tools:start -->
+| Area | Reads | Changes, after asking you |
+|---|---|---|
+| Account | Show Lycatra account | - |
+| Agents | List accessible Lycatra agents | - |
+| Feedback | - | Report a bug or feedback |
+| Wiki | List Lycatra wiki spaces; List Lycatra wiki documents; Search Lycatra wiki; Read Lycatra wiki document; List wiki page versions; List wiki child pages; List wiki backlinks; List wiki discussions; Show wiki discussion | Create Lycatra wiki document; Update Lycatra wiki document; Delete Lycatra wiki document; Start wiki discussion; Reply to wiki discussion |
+| Schedules | List scheduled agent tasks | Schedule an agent task; Cancel a scheduled agent task |
+| Notifications | List agent notifications; List open notification questions | Dismiss agent notification; Snooze agent notifications; Answer notification question; Ask a notification question |
+| Matrix chat | Read Matrix room history; List joined Matrix rooms | Send Lycatra Matrix message |
+| Teams | List Lycatra teams; Read Lycatra team; List Lycatra team tasks; Read Lycatra team state | Create Lycatra team; Add agent to Lycatra team; Remove agent from Lycatra team; Set Lycatra team goal; Create Lycatra team task; Set Lycatra team state; Claim Lycatra team task; Complete Lycatra team task; Return Lycatra team task |
+| Vault | Check Lycatra Vault status; List Lycatra Vault items; Show one Lycatra Vault item | Unlock the Lycatra Vault; Request access to a vault collection; Create a Lycatra Vault login |
+| Agent browser | Read the agent browser's current page; Screenshot the agent's browser | Open a page in an agent's browser; Click an element in the agent's browser; Fill a field in the agent's browser; Press a key in the agent's browser; Sign in with a vault credential; Sign up with a generated vault credential; Close the agent's browser session |
+| Search | Search Lycatra | - |
+<!-- generated:tools:end -->
 
-- Help: [lycatra.com/support](https://lycatra.com/support)
-- Privacy: [lycatra.com/privacy](https://lycatra.com/privacy)
+Showing a vault item returns its username, notes and visible fields. No tool
+returns a password or a two-factor code.
+
+Every tool declares whether it only reads or changes something. Every tool
+that changes something, such as creating a page, sending a message or clicking
+on a website, is marked destructive, so your app asks you first.
+
+## Privacy and support
+
+- Setup and usage: [lycatra.com/connect](https://lycatra.com/connect)
+- Privacy policy: [lycatra.com/privacy](https://lycatra.com/privacy)
 - Terms: [lycatra.com/terms](https://lycatra.com/terms)
+- Help: [lycatra.com/support](https://lycatra.com/support) or support@lycatra.com
+
+To disconnect, open Settings, Signed-in apps on lycatra.com and disconnect the
+app, then remove Lycatra from the app's connectors or plugins. Connecting again
+starts a new approval.
 
