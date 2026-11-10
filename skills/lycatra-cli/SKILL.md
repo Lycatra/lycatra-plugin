@@ -63,6 +63,7 @@ These also run only from the CLI:
 | Hand work to another agent and get its reply | `lycatra agent handoff <agent> "<brief>" [--wait]` |
 | Create an agent (or in the app at /ai) | `lycatra agent create <name> --purpose "..."` |
 | Ask to run a command on an enrolled computer | `lycatra ssh request <computer> --exec "<command>" --for 2h --why "<reason>" --wait` |
+| Connect a domain for the website and mail, and see the DNS records it needs | `lycatra domains add <domain>` |
 <!-- generated:cli-only-commands:end -->
 
 Add `--json` when you need to read the output. A bare `lycatra ssh <agent>`

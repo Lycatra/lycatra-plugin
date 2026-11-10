@@ -13,6 +13,8 @@
 - Signing in through an agent's browser fills the password itself; no tool
   ever shows a password in the chat.
 - The CLI skill asks before installing the Lycatra command-line tool.
+- The skills point to the Lycatra CLI for connecting your organization's domains
+  (`lycatra domains`); assistants cannot manage domains yet.
 
 ## 0.2.0 - 2026-09-26
 

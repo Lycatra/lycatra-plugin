@@ -22,7 +22,7 @@ to file it with `issues_report`, and file it in their words once they agree.
 Some work needs the Lycatra CLI instead of these tools:
 
 <!-- generated:cli-work:start -->
-delivering a file (`lycatra deliver`), recording a bug with attachments (`lycatra issues report`), handing work to an agent (`lycatra agent handoff`), creating an agent (`lycatra agent create`), running commands in an agent or on a computer (`lycatra ssh`), sharing a local port (`lycatra share`), and running with vault secrets (`lycatra vault run`).
+delivering a file (`lycatra deliver`), recording a bug with attachments (`lycatra issues report`), handing work to an agent (`lycatra agent handoff`), creating an agent (`lycatra agent create`), running commands in an agent or on a computer (`lycatra ssh`), managing domains (`lycatra domains`), sharing a local port (`lycatra share`), and running with vault secrets (`lycatra vault run`).
 <!-- generated:cli-work:end -->
 
 When a shell is available, the `lycatra-cli` skill covers it.
