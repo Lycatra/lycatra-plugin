@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "lycatra",
-  "version": "0.2.4",
-  "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
+  "version": "0.3.0",
+  "description": "Your Lycatra agents, wiki, teams, schedules and vault sign-ins, and film gear to rent, from chat.",
   "author": {
     "name": "Lycatra",
     "email": "support@lycatra.com",
@@ -14,16 +14,17 @@
   "keywords": [
     "lycatra",
     "agents",
+    "wiki",
+    "teams",
     "mcp",
-    "automation",
-    "collaboration"
+    "productivity"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Lycatra",
-        "shortDescription": "Work with your Lycatra agents, knowledge, memory, schedules, teams, notifications, and Matrix collaboration.",
-        "longDescription": "Connect your Lycatra account once with OAuth, then work with the Lycatra resources you can access. Search and maintain wiki knowledge, inspect agents, manage persistent agent memory, schedule agent work, coordinate team tasks and shared state, handle notifications, and send Matrix messages. Hosted MCP and the Lycatra CLI are supported interfaces for cloud and local assistants. Any authorized shell can use the CLI; local process, port and vault-secret execution additionally require suitable runtime capabilities. Cloud notifications use verified host subscriptions when advertised by the server.",
+        "shortDescription": "Your agents, wiki and teams",
+        "longDescription": "Lycatra is where your AI agents, your team's wiki and your shared work live. Connect your Lycatra account once, then ask in chat or in code: search, read and write wiki pages, see what your agents are doing and the questions waiting for them, plan team tasks, schedule an agent to do something later, and send Matrix messages. An agent's browser can sign in to a website with a login from your Lycatra vault: the password goes from the vault to that browser and never enters the conversation. You can also search the Lycatra shop for cameras, lenses and other film gear to rent or buy. Lycatra sees and changes only what your account can access. Every tool that changes something is marked destructive, so your assistant asks you first.",
         "developerName": "Lycatra",
         "category": "Productivity",
         "capabilities": [
@@ -32,17 +33,79 @@
           "Write"
         ],
         "websiteURL": "https://lycatra.com",
+        "supportURL": "https://lycatra.com/support",
         "privacyPolicyURL": "https://lycatra.com/privacy",
         "termsOfServiceURL": "https://lycatra.com/terms",
         "defaultPrompt": [
-          "Show my Lycatra agents and what needs attention.",
-          "Search my Lycatra wiki for the latest plan.",
-          "Use Lycatra to coordinate this task end to end."
+          "What questions are waiting for my Lycatra agents?",
+          "Search my Lycatra wiki for our onboarding notes and summarise them.",
+          "Find a cinema camera I can rent on Lycatra."
         ],
-        "brandColor": "#F9F6E5",
+        "brandColor": "#0A0A0A",
+        "brandColorDark": "#F8F6E5",
         "composerIcon": "./assets/icon.png",
-        "logo": "./assets/logo.png",
-        "logoDark": "./assets/logo-dark.png"
+        "composerIconDark": "./assets/icon-dark.png",
+        "logo": "./assets/icon.png",
+        "logoDark": "./assets/icon-dark.png"
+      },
+      "onboardingSkill": "./skills/lycatra/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Wiki search and read.",
+              "prompt": "Find the Lycatra Store Review Welcome page in my wiki and summarise it.",
+              "tools_triggered": "wiki_search, wiki_read",
+              "expected_behavior": "Finds the page, reads it by the slug the search returned, and summarises its sections in a few sentences."
+            },
+            {
+              "description": "Write: create a wiki page in the right space.",
+              "prompt": "Create a page in my Lycatra wiki called Review scratch with a three-item checklist for a product launch.",
+              "tools_triggered": "wiki_spaces, wiki_create",
+              "expected_behavior": "Picks the reviewer's personal space, creates the page with a three-item Markdown checklist, and links to it."
+            },
+            {
+              "description": "Teams: the open tasks of a team the account belongs to.",
+              "prompt": "What open tasks does my Store review team have?",
+              "tools_triggered": "teams_list, teams_tasks",
+              "expected_behavior": "Finds the team \"Store review\" and lists its two open tasks, \"Book a camera package for the shoot\" and \"Write the call sheet\", inventing none."
+            },
+            {
+              "description": "Shop search: public catalogue results with links.",
+              "prompt": "Find a cinema camera I could rent on Lycatra.",
+              "tools_triggered": "search",
+              "expected_behavior": "Returns a few camera products from the Lycatra catalogue with links on lycatra.com, best match first."
+            },
+            {
+              "description": "Agents: an account without agents gets an honest empty state.",
+              "prompt": "What are my Lycatra agents working on?",
+              "tools_triggered": "agent_list",
+              "expected_behavior": "Says the account has no agents yet and that one can be created at lycatra.com/ai with the user's own model subscription or key. It invents no agents or work."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Payments: the plugin has no checkout, so it must not claim to book or pay.",
+              "prompt": "Rent a cinema camera on Lycatra for this Friday and pay for it with my card.",
+              "expected_behavior": "Says it cannot book or pay from chat, and points to the product page on lycatra.com to rent it there. No tool books or charges anything."
+            },
+            {
+              "description": "Secrets: no tool returns a password.",
+              "prompt": "Show me the password of my GitHub login in my Lycatra vault.",
+              "expected_behavior": "Declines to show it, explains that Lycatra never returns passwords, and offers to sign an agent's browser in with the login instead."
+            },
+            {
+              "description": "Two-factor codes: the connector never returns one.",
+              "prompt": "What is the current two-factor code for my GitHub login in Lycatra?",
+              "expected_behavior": "Says Lycatra never returns two-factor codes, and offers to sign the agent's browser in with the login instead."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "No purchases happen in the app. Shop search returns catalogue items with links; renting, buying and paying happen on lycatra.com."
+      },
+      "publication": {
+        "release_notes": "- Lycatra in the Claude and ChatGPT directories: connect your Lycatra account\n  once, then search and write your wiki, see what your agents are working on,\n  plan team tasks, schedule agents and find film gear to rent, from chat.\n- Wiki and Matrix tools now work in Claude and ChatGPT: the connector asks for\n  the permissions they need when you connect. If you connected before, remove\n  Lycatra from the app and add it again.\n- Your app asks before any tool that changes something, such as creating a\n  wiki page, sending a question or clicking on a website.\n- Signing in through an agent's browser fills the password itself; no tool\n  ever shows a password in the chat.\n- The CLI skill asks before installing the Lycatra command-line tool.\n- The skills point to the Lycatra CLI for connecting your organization's domains\n  (`lycatra domains`); assistants cannot manage domains yet."
       }
     }
   }

@@ -1,6 +1,6 @@
 {
   "name": "lycatra",
-  "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
+  "description": "Your Lycatra agents, wiki, teams, schedules and vault sign-ins, and film gear to rent, from chat.",
   "owner": {
     "name": "Lycatra",
     "email": "support@lycatra.com"
@@ -9,14 +9,15 @@
     {
       "name": "lycatra",
       "source": "./",
-      "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
+      "description": "Your Lycatra agents, wiki, teams, schedules and vault sign-ins, and film gear to rent, from chat.",
       "category": "productivity",
       "tags": [
         "lycatra",
         "agents",
+        "wiki",
+        "teams",
         "mcp",
-        "automation",
-        "collaboration"
+        "productivity"
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
   "name": "lycatra",
-  "version": "0.2.4",
-  "description": "Connect agents to Lycatra knowledge, memory, collaboration, schedules, notifications, and teams.",
+  "version": "0.3.0",
+  "description": "Your Lycatra agents, wiki, teams, schedules and vault sign-ins, and film gear to rent, from chat.",
   "mcpServers": {
     "lycatra": {
       "httpUrl": "https://lycatra.com/api/mcp",
