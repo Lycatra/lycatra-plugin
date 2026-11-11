@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- `lycatra domains`: every change to a domain is in its history and an
+  organization admin can undo it (`lycatra domains undo <change-id>`); a removed
+  domain can be restored for 30 days. Domains API writes now answer
+  `{ status, change, domain }` (or `removed: true`) instead of the bare domain,
+  so update the CLI with `lycatra-tools install`.
+
 ## 0.3.0 - 2026-11-05
 
 - Lycatra in the Claude and ChatGPT directories: connect your Lycatra account
