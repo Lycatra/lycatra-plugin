@@ -113,3 +113,36 @@
 | Tool | Summary | Safety |
 |---|---|---|
 | `search` | Search everything the connected Lycatra account can see, the way the site's Ctrl+K palette does: the site's pages and commands, equipment, suppliers, articles, categories and brands, and the account's own settings and wiki pages. | read |
+
+## Domains
+
+| Tool | Summary | Safety |
+|---|---|---|
+| `domains_list` | List an organization's domains by name, each with its uses, records and their last check, and the connects that wait for an admin. | read |
+| `domains_show` | Show one domain: whether its ownership is proven, each use's state, every record it needs with its live status, and its newest changes. | read |
+| `domains_add` | Connect a domain to an organization and get the one TXT record that proves ownership. | write |
+| `domains_use` | Turn a use on for a domain (web, mail.send, mail.receive, outreach) and list the records it needs; they are checked right away. | write |
+| `domains_stop` | Stop a use for a domain. | write |
+| `domains_check` | Read the domain's DNS again now instead of at its next scheduled check. | write |
+| `domains_remove` | Remove a domain from an organization once every use is stopped. | write |
+| `domains_undo` | Undo one change to a domain by its id (from a write's change.id or show's recent): a new change takes it back under the same rules. | write |
+
+## Shop
+
+| Tool | Summary | Safety |
+|---|---|---|
+| `shop_search` | Search Lycatra's film, photo and drone equipment to buy or rent in Switzerland, by text, category, brand, exact specifications and price. | read |
+| `shop_product` | Read one product: specifications (compatibility called out), identifiers, images, and every seller's offer with gross price, stock, condition, shipping, lead time, or rental day rate, booking and pickup. | read |
+| `shop_categories` | List the shop's categories with the slugs shop_search and shop_filters take. | read |
+| `shop_filters` | Read a category's specifications with the exact values its products carry and how many carry each (pass value as filters[key] to shop_search), numeric ranges, and its buy and rent price range. | read |
+| `shop_cart` | Prepare a cart from product and offer ids (and rental dates) and get the link the person opens to land in checkout with it, plus a priced preview. | read |
+| `shop_store` | Read one shop on Lycatra by its handle (the <slug> in lycatra.com/r/<slug>): its name, its page and a page of its offers with price, stock or booking, in the order its store shows them. | read |
+| `shop_request_product` | Ask for a product the shop does not list yet, so we source it. | write |
+| `shop_request_status` | Check whether a product asked for with shop_request_product is in yet; once it is, returns its id for shop_product. | read |
+
+## Orders
+
+| Tool | Summary | Safety |
+|---|---|---|
+| `orders_list` | List the person's own equipment orders on Lycatra, newest first: number, date, where it stands and the total. | read |
+| `orders_get` | Read one of the person's orders by number (LY-…) or id: each line's status and seller, whether it is paid, shipped (and with which carrier) or delivered, a rental's pickup and return, the withdrawal right, and the totals. | read |
