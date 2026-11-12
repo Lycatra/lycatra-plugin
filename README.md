@@ -183,6 +183,9 @@ The full command list is in `skills/lycatra-cli/SKILL.md`.
 | Vault | Check Lycatra Vault status; List Lycatra Vault items; Show one Lycatra Vault item | Unlock the Lycatra Vault; Request access to a vault collection; Create a Lycatra Vault login |
 | Agent browser | Read the agent browser's current page; Screenshot the agent's browser | Open a page in an agent's browser; Click an element in the agent's browser; Fill a field in the agent's browser; Press a key in the agent's browser; Sign in with a vault credential; Sign up with a generated vault credential; Close the agent's browser session |
 | Search | Search Lycatra | - |
+| Domains | List domains; Show a domain | Connect a domain; Turn a use on; Stop a use; Check a domain now; Remove a domain; Undo a domain change |
+| Shop | Search the shop; Read a product; List categories; Read a category's filters; Prepare a cart; One shop's offers; Check a product request | Ask for a product |
+| Orders | List my orders; Track an order | - |
 <!-- generated:tools:end -->
 
 Showing a vault item returns its username, notes and visible fields. No tool

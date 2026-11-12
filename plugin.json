@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "lycatra",
-  "version": "0.3.0-beta.3",
+  "version": "0.3.0-beta.4",
   "description": "Your Lycatra agents, wiki, teams, schedules and vault sign-ins, and film gear to rent, from chat.",
   "author": {
     "name": "Lycatra",
