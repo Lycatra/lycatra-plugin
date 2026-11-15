@@ -32,15 +32,15 @@ Team and Enterprise plans: an organization owner adds Lycatra, then members conn
 
 ChatGPT on the web and desktop.
 
-Developer mode:
+Add a custom MCP server:
 
-1. In ChatGPT, open Settings, then Security and login, and turn on Developer mode.
-2. Open chatgpt.com/plugins, choose the plus button, and enter https://dev.lycatra.com/api/mcp.
-3. Sign in to Lycatra when ChatGPT asks.
+1. On chatgpt.com, open Plugins, choose the plus button, then Add custom MCP server.
+2. Name it Lycatra, enter https://dev.lycatra.com/api/mcp and choose OAuth.
+3. Confirm, choose Create as a plugin, and sign in to Lycatra when ChatGPT asks.
 
 - [Open ChatGPT plugins](https://chatgpt.com/plugins)
 
-Until Lycatra is in the ChatGPT directory, adding it needs developer mode, which depends on your plan.
+Until Lycatra is in the ChatGPT directory, add it on the web; mobile can't add servers. Pro gets read-only tools, Business and Enterprise read and write.
 
 ### Claude Code
 
