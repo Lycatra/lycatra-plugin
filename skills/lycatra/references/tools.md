@@ -145,4 +145,10 @@
 | Tool | Summary | Safety |
 |---|---|---|
 | `orders_list` | List the person's own equipment orders on Lycatra, newest first: number, date, where it stands and the total. | read |
-| `orders_get` | Read one of the person's orders by number (LY-…) or id: each line's status and seller, whether it is paid, shipped (and with which carrier) or delivered, a rental's pickup and return, the withdrawal right, and the totals. | read |
+| `orders_get` | Read one of the person's orders by number (LY-…) or id, or the order placed from a review by its reviewId: each line's status and seller, whether it is paid, shipped (and with which carrier) or delivered, a rental's pickup and return, the withdrawal right, and the totals. | read |
+
+## Checkout
+
+| Tool | Summary | Safety |
+|---|---|---|
+| `checkout_preview` | Prepare an order of the person's for them to review and place on Lycatra: from product and offer ids (shop_product), a rental's days and cover. | draft |
