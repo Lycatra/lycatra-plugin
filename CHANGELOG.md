@@ -2,13 +2,19 @@
 
 ## Unreleased
 
+- Review an order in the chat before you place it: `checkout_preview` shows the
+  lines, the totals with VAT and shipping, the sellers, the ways to pay and what
+  still blocks the order, with no name, address, email or phone sent to the
+  model. "Review and pay on lycatra.com" opens the order on Lycatra, where you
+  sign in, check it and place it yourself; nothing is ordered from the chat.
+  When you come back, the chat shows the order you placed. A review is kept for
+  a limited time and the same review is updated while you change it in the chat.
 - Track your equipment orders in Claude and ChatGPT: `orders_list` and
   `orders_get` show where each order stands, its parcels (the tracking link
   opens from the order card), the right of withdrawal and the totals, and the view checks the
   status again when you come back to the chat. Paying, cancelling and withdrawing
   stay on Lycatra, one tap away. Connecting asks to "see your orders and prepare
-  orders for you to review": preparing orders for your review comes with the next
-  step, so you won't be asked again for it. An app connected earlier gets orders
+  orders for you to review", and you won't be asked again for it. An app connected earlier gets orders
   (and Domains, if it predates them) the next time it connects, as long as its
   connection was never edited since it was set up. If it was, or its owner removed
   a scope, the tool says so: remove Lycatra from your connectors and add it again.
