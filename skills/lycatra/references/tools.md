@@ -28,9 +28,11 @@
 | `wiki_search` | Search titles and content across wiki documents accessible to the connected Lycatra account, and the names of files attached to them. | read |
 | `wiki_read` | Read one accessible Lycatra wiki document by slug. | read |
 | `wiki_create` | Create one document in a wiki space accessible to the connected Lycatra account. | write |
-| `wiki_edit` | Update the title, Markdown body, or publication status of one accessible wiki document. | write |
+| `wiki_edit` | Update the title, Markdown body, or publication status of one accessible wiki document, supplying expected_version from wiki_read whenever content is supplied. | write |
 | `wiki_delete` | Permanently delete one accessible Lycatra wiki document. | write |
 | `wiki_history` | List recent versions of one accessible wiki page. | read |
+| `wiki_files` | List the files attached to one accessible wiki page, oldest first. | read |
+| `wiki_detach` | Remove one file from a wiki page: it leaves the page's attachments and its text, and the page's history keeps it. | write |
 | `wiki_children` | List direct child pages below one accessible wiki page. | read |
 | `wiki_backlinks` | List accessible wiki pages that link to one page. | read |
 | `wiki_discuss_list` | List discussion threads on one accessible wiki page. | read |

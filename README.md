@@ -175,7 +175,7 @@ The full command list is in `skills/lycatra-cli/SKILL.md`.
 | Account | Show Lycatra account | - | - |
 | Agents | List accessible Lycatra agents | - | - |
 | Feedback | - | - | Report a bug or feedback |
-| Wiki | List Lycatra wiki spaces; List Lycatra wiki documents; Search Lycatra wiki; Read Lycatra wiki document; List wiki page versions; List wiki child pages; List wiki backlinks; List wiki discussions; Show wiki discussion | - | Create Lycatra wiki document; Update Lycatra wiki document; Delete Lycatra wiki document; Start wiki discussion; Reply to wiki discussion |
+| Wiki | List Lycatra wiki spaces; List Lycatra wiki documents; Search Lycatra wiki; Read Lycatra wiki document; List wiki page versions; List wiki page files; List wiki child pages; List wiki backlinks; List wiki discussions; Show wiki discussion | - | Create Lycatra wiki document; Update Lycatra wiki document; Delete Lycatra wiki document; Remove a file from a wiki page; Start wiki discussion; Reply to wiki discussion |
 | Schedules | List scheduled agent tasks | - | Schedule an agent task; Cancel a scheduled agent task |
 | Notifications | List agent notifications; List open notification questions | - | Dismiss agent notification; Snooze agent notifications; Answer notification question; Ask a notification question |
 | Matrix chat | Read Matrix room history; List joined Matrix rooms | - | Send Lycatra Matrix message |
