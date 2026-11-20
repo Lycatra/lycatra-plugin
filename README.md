@@ -175,7 +175,7 @@ The full command list is in `skills/lycatra-cli/SKILL.md`.
 | Account | Show Lycatra account | - | - |
 | Agents | List accessible Lycatra agents | - | - |
 | Feedback | - | - | Report a bug or feedback |
-| Wiki | List Lycatra wiki spaces; List Lycatra wiki documents; Search Lycatra wiki; Read Lycatra wiki document; List wiki page versions; List wiki child pages; List wiki backlinks; List wiki discussions; Show wiki discussion | - | Create Lycatra wiki document; Update Lycatra wiki document; Delete Lycatra wiki document; Start wiki discussion; Reply to wiki discussion |
+| Wiki | List Lycatra wiki spaces; List Lycatra wiki documents; Search Lycatra wiki; Read Lycatra wiki document; List wiki page versions; List wiki page files; List wiki child pages; List wiki backlinks; List wiki discussions; Show wiki discussion; Read wiki canvases | - | Create Lycatra wiki document; Update Lycatra wiki document; Delete Lycatra wiki document; Remove a file from a wiki page; Start wiki discussion; Reply to wiki discussion; Draw on a wiki canvas; Undo a wiki canvas write |
 | Schedules | List scheduled agent tasks | - | Schedule an agent task; Cancel a scheduled agent task |
 | Notifications | List agent notifications; List open notification questions | - | Dismiss agent notification; Snooze agent notifications; Answer notification question; Ask a notification question |
 | Matrix chat | Read Matrix room history; List joined Matrix rooms | - | Send Lycatra Matrix message |
@@ -184,7 +184,7 @@ The full command list is in `skills/lycatra-cli/SKILL.md`.
 | Agent browser | Read the agent browser's current page; Screenshot the agent's browser | - | Open a page in an agent's browser; Click an element in the agent's browser; Fill a field in the agent's browser; Press a key in the agent's browser; Sign in with a vault credential; Sign up with a generated vault credential; Close the agent's browser session |
 | Search | Search Lycatra | - | - |
 | Domains | List domains; Show a domain | - | Connect a domain; Turn a use on; Stop a use; Check a domain now; Remove a domain; Undo a domain change |
-| Shop | Search the shop; Read a product; List categories; Read a category's filters; Prepare a cart; One shop's offers; Check a product request | - | Ask for a product |
+| Shop | Search the shop; Read a product; Compare products; List categories; Read a category's filters; Prepare a cart; One shop's offers; Check a product request | - | Ask for a product |
 | Orders | List my orders; Track an order | - | - |
 | Checkout | - | Review an order | - |
 <!-- generated:tools:end -->

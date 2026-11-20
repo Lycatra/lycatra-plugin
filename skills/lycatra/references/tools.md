@@ -25,18 +25,23 @@
 |---|---|---|
 | `wiki_spaces` | List the wiki spaces this connection can access. | read |
 | `wiki_list` | List wiki documents accessible to the connected Lycatra account, newest first. | read |
-| `wiki_search` | Search titles and content across wiki documents accessible to the connected Lycatra account, and the names of files attached to them. | read |
+| `wiki_search` | Search titles and content across wiki documents accessible to the connected Lycatra account, the names of files attached to them, and the words drawn on their canvases (read a canvas hit with wiki_canvas_show, its page_slug and key). | read |
 | `wiki_read` | Read one accessible Lycatra wiki document by slug. | read |
 | `wiki_create` | Create one document in a wiki space accessible to the connected Lycatra account. | write |
-| `wiki_edit` | Update the title, Markdown body, or publication status of one accessible wiki document. | write |
+| `wiki_edit` | Update the title, Markdown body, or publication status of one accessible wiki document, supplying expected_version from wiki_read whenever content is supplied. | write |
 | `wiki_delete` | Permanently delete one accessible Lycatra wiki document. | write |
 | `wiki_history` | List recent versions of one accessible wiki page. | read |
+| `wiki_files` | List the files attached to one accessible wiki page, oldest first. | read |
+| `wiki_detach` | Remove one file from a wiki page: it leaves the page's attachments and its text, and the page's history keeps it. | write |
 | `wiki_children` | List direct child pages below one accessible wiki page. | read |
 | `wiki_backlinks` | List accessible wiki pages that link to one page. | read |
 | `wiki_discuss_list` | List discussion threads on one accessible wiki page. | read |
 | `wiki_discuss_show` | Read one accessible wiki discussion and its replies. | read |
 | `wiki_discuss_new` | Start a titled discussion on one accessible wiki page. | write |
 | `wiki_discuss_reply` | Post a reply to one accessible wiki discussion. | write |
+| `wiki_canvas_show` | Read the Excalidraw canvases on one wiki page as outlines (each shape with its id, label and position, each arrow with its ends) and who is on each now with what they have selected. | read |
+| `wiki_canvas_edit` | Draw on a canvas of one wiki page, live: people with it open see the change at once and can undo it as a whole. | write |
+| `wiki_canvas_undo` | Undo one agent write on a wiki canvas as a whole: batch_id names it (any agent's, from wiki_canvas_edit or the canvas notice), or without it your own latest write (asking again answers already_undone; an older write needs its batch_id). | write |
 
 ## Schedules
 
@@ -133,6 +138,7 @@
 |---|---|---|
 | `shop_search` | Search Lycatra's film, photo and drone equipment to buy or rent in Switzerland, by text, category, brand, exact specifications and price. | read |
 | `shop_product` | Read one product: specifications (compatibility called out), identifiers, images, and every seller's offer with gross price, stock, condition, shipping, lead time, or rental day rate, booking and pickup. | read |
+| `shop_compare` | Compare two to five distinct numeric product ids from shop_search or shop_product; repeated ids count once. | read |
 | `shop_categories` | List the shop's categories with the slugs shop_search and shop_filters take. | read |
 | `shop_filters` | Read a category's specifications with the exact values its products carry and how many carry each (pass value as filters[key] to shop_search), numeric ranges, and its buy and rent price range. | read |
 | `shop_cart` | Prepare a cart from product and offer ids (and rental dates) and get the link the person opens to land in checkout with it, plus a priced preview. | read |
