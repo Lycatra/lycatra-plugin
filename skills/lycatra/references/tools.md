@@ -28,7 +28,7 @@
 | `wiki_search` | Search titles and content across wiki documents accessible to the connected Lycatra account, the names of files attached to them, and the words drawn on their canvases (read a canvas hit with wiki_canvas_show, its page_slug and key). | read |
 | `wiki_read` | Read one accessible Lycatra wiki document by slug. | read |
 | `wiki_create` | Create one document in a wiki space accessible to the connected Lycatra account. | write |
-| `wiki_edit` | Update the title, Markdown body, or publication status of one accessible wiki document, supplying expected_version from wiki_read whenever content is supplied. | write |
+| `wiki_edit` | Update the title or Markdown body of one accessible wiki document, supplying expected_version from wiki_read whenever content is supplied. | write |
 | `wiki_delete` | Permanently delete one accessible Lycatra wiki document. | write |
 | `wiki_history` | List recent versions of one accessible wiki page. | read |
 | `wiki_files` | List the files attached to one accessible wiki page, oldest first. | read |

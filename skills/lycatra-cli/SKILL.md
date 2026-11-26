@@ -46,6 +46,9 @@ authorization. Never run them, or repair commands, as part of diagnosis.
 | Share a local port | `lycatra share start <port>`, then `lycatra share ls` and `lycatra share stop <id>` |
 | Hand the browser to a person | `lycatra browser handoff "<what they should do>"` in the background; send the printed link |
 | Show a person the browser or a dev server live | `lycatra browser live --open http://localhost:3000` in the background; send the printed link |
+| Check whether a page has finished verification | `lycatra browser unblock --wait 10s` inspect the next page on clear; verification-required leaves the task blocked |
+| Work in a native desktop tab that a person can take over | `lycatra browser native start --browser chromium` requires a desktop with a browser and matching WebDriver |
+| Run a site-authorized partner operation | `lycatra browser partner --task <id> --origin <origin>` use the task id and origin issued with the agent's grant |
 | Reach a shared port locally | `lycatra forward <token> [localPort]` |
 | Run a program with vault secrets in its environment | `lycatra vault run <item> --env NAME=field -- <command>` |
 | Fill a login into the open local browser page | `lycatra vault login <item>` |
